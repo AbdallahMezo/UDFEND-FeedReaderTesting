@@ -13,9 +13,8 @@ $(function () {
      * a related set of tests. This suite is all about the RSS
      * feeds definitions, the allFeeds variable in our application.
      */
-    var $body = $('body'),
-        old_feed,
-        new_feed;
+    
+    
 
     describe('RSS Feeds', function () {
         /* This is our first test - it tests to make sure that the
@@ -58,6 +57,8 @@ $(function () {
     /* Write a new test suite named "The menu" */
 
     describe('The menu', function () {
+        
+        var $body = $('body');
 
         /* Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -73,7 +74,7 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         it('Visiblilty changes when the menu is clicked', function () {
-            $('.menu-icon-link').trigger('click');
+            $('.menu-icon-link').click();
             // Expect that the menu on click is false/Hidden
             expect($body.hasClass('menu-hidden')).toBeFalsy();
             // Expeect that on click the menu visibility it truth
@@ -99,13 +100,14 @@ $(function () {
          */
         it('It has an Initial Entries after loading - SUCCESS', function (done) {
             var entry = $('.feed .entry')[0];
-            expect(entry).not.toBe('');
+            expect($('.feed .entry').length).not.toBe(0);
             done();
         });
     });
     /* Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
-
+        var old_feed,
+        new_feed;
         // Declaring another beforeEach function to ensure that a new feed is loaded and content is changed
         beforeEach(function (done) {
             $('.feed').empty();
