@@ -124,7 +124,7 @@ $(function () {
         it('The content changes when the feed is loaded', function (done) {
             loadFeed(1, function () {
                 new_feed = $('.feed').find("h2").text();
-                console.log("entries after: " + entries_after);
+                console.log("entries after: " + new_feed);
                 expect(old_feed).not.toEqual(new_feed);
             });
         });
