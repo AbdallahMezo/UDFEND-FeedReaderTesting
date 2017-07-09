@@ -13,8 +13,8 @@ $(function () {
      * a related set of tests. This suite is all about the RSS
      * feeds definitions, the allFeeds variable in our application.
      */
-    
-    
+
+
 
     describe('RSS Feeds', function () {
         /* This is our first test - it tests to make sure that the
@@ -36,7 +36,7 @@ $(function () {
          */
         it('URLs are defined and not empty', function () {
             for (var i = 0; i < allFeeds.length; i++) {
-                expect(allFeeds[i].url).toBeDefined;
+                expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url).not.toBe('');
             }
         });
@@ -57,7 +57,7 @@ $(function () {
     /* Write a new test suite named "The menu" */
 
     describe('The menu', function () {
-        
+
         var $body = $('body');
 
         /* Write a test that ensures the menu element is
@@ -99,7 +99,6 @@ $(function () {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         it('It has an Initial Entries after loading - SUCCESS', function (done) {
-            var entry = $('.feed .entry')[0];
             expect($('.feed .entry').length).not.toBe(0);
             done();
         });
@@ -107,12 +106,10 @@ $(function () {
     /* Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
         var old_feed,
-        new_feed;
+            new_feed;
         // Declaring another beforeEach function to ensure that a new feed is loaded and content is changed
         beforeEach(function (done) {
             $('.feed').empty();
-
-
             loadFeed(0, function () {
                 // Store the old feed in a variable
                 old_feed = $('.feed').find("h2").text();
@@ -128,6 +125,7 @@ $(function () {
                 new_feed = $('.feed').find("h2").text();
                 console.log("entries after: " + new_feed);
                 expect(old_feed).not.toEqual(new_feed);
+                done();
             });
         });
     });
